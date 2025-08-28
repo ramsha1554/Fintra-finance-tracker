@@ -14,7 +14,7 @@ const AddTransactionForm = ({ onAdd }) => {
       amount: isExpense
         ? -Math.abs(parseFloat(amount))
         : Math.abs(parseFloat(amount)),
-      date: new Date().toISOString(), 
+      date: new Date().toISOString(),
     };
 
     onAdd(newTransaction);
@@ -23,35 +23,43 @@ const AddTransactionForm = ({ onAdd }) => {
   };
 
   return (
-    <form className="bg-gradient-to-b from-white to-gray-50 p-6 rounded-2xl shadow-xl space-y-4">
-
+    <form className="bg-[#003049] text-white p-6 rounded-2xl shadow-xl space-y-5 font-sans">
+      {/* Description Input */}
       <input
         type="text"
         placeholder="Description"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-purple-400 focus:outline-none transition"
+        className="w-full p-3 bg-[#1a1a1a] text-white text-lg border border-[#f77f00] rounded-xl focus:ring-2 focus:ring-[#f77f00] focus:outline-none transition"
       />
 
- 
+      {/* Amount Input */}
       <input
         type="number"
         placeholder="Amount"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
-        className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-purple-400 focus:outline-none transition"
+        className="w-full p-3 bg-[#1a1a1a] text-white text-lg border border-[#06D6A0] rounded-xl focus:ring-2 focus:ring-[#06D6A0] focus:outline-none transition"
       />
 
-      <div className="flex gap-3">
+      {/* Buttons */}
+      <div className="flex gap-4">
+        {/* Income Button (Teal) */}
         <button
           onClick={(e) => handleSubmit(e, false)}
-          className="w-1/2 bg-gradient-to-r from-green-400 to-green-600 text-white py-3 rounded-xl font-semibold shadow-md hover:scale-105 transition-transform"
+          className="w-1/2 bg-[#06D6A0] text-[#1a1a1a] text-lg font-bold tracking-wide 
+                     hover:bg-gradient-to-r hover:from-[#06D6A0] hover:to-[#04b58a]
+                     active:scale-105 py-3 rounded-xl shadow-lg transition-transform duration-200"
         >
           Add Income
         </button>
+
+        {/* Expense Button (Orange) */}
         <button
           onClick={(e) => handleSubmit(e, true)}
-          className="w-1/2 bg-gradient-to-r from-red-400 to-red-600 text-white py-3 rounded-xl font-semibold shadow-md hover:scale-105 transition-transform"
+          className="w-1/2 bg-[#f77f00] text-white text-lg font-bold tracking-wide 
+                     hover:bg-gradient-to-r hover:from-[#f77f00] hover:to-[#d65a00]
+                     active:scale-105 py-3 rounded-xl shadow-lg transition-transform duration-200"
         >
           Add Expense
         </button>
@@ -61,3 +69,4 @@ const AddTransactionForm = ({ onAdd }) => {
 };
 
 export default AddTransactionForm;
+
