@@ -14,7 +14,6 @@ export default function Header() {
           Fintra
         </motion.h1>
 
-        {/* Navigation */}
         <motion.nav
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -32,13 +31,13 @@ export default function Header() {
           </a>
         </motion.nav>
 
-        {/* CTA Button */}
+   
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           className="bg-[#f77f00] px-5 py-2 rounded-xl font-semibold text-white shadow-lg hover:bg-[#d65a00] transition-colors"
         >
-          Get Started
+        Manage Your Expenses
         </motion.button>
       </div>
     </header>

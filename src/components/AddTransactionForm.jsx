@@ -33,7 +33,6 @@ const AddTransactionForm = ({ onAdd }) => {
         className="w-full p-3 bg-[#1a1a1a] text-white text-lg border border-[#f77f00] rounded-xl focus:ring-2 focus:ring-[#f77f00] focus:outline-none transition"
       />
 
-      {/* Amount Input */}
       <input
         type="number"
         placeholder="Amount"
@@ -42,9 +41,9 @@ const AddTransactionForm = ({ onAdd }) => {
         className="w-full p-3 bg-[#1a1a1a] text-white text-lg border border-[#06D6A0] rounded-xl focus:ring-2 focus:ring-[#06D6A0] focus:outline-none transition"
       />
 
-      {/* Buttons */}
+   
       <div className="flex gap-4">
-        {/* Income Button (Teal) */}
+    
         <button
           onClick={(e) => handleSubmit(e, false)}
           className="w-1/2 bg-[#06D6A0] text-[#1a1a1a] text-lg font-bold tracking-wide 
@@ -54,7 +53,7 @@ const AddTransactionForm = ({ onAdd }) => {
           Add Income
         </button>
 
-        {/* Expense Button (Orange) */}
+     
         <button
           onClick={(e) => handleSubmit(e, true)}
           className="w-1/2 bg-[#f77f00] text-white text-lg font-bold tracking-wide 

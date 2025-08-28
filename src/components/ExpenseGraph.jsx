@@ -18,7 +18,7 @@ const ExpenseGraph = ({ transactions }) => {
 
     return Object.values(dailyData)
       .sort((a, b) => new Date(a.date) - new Date(b.date))
-      .slice(-7); // Show last 7 days
+      .slice(-7); 
   };
 
   const graphData = processGraphData();
@@ -55,7 +55,6 @@ const ExpenseGraph = ({ transactions }) => {
             {/* Y Axis */}
             <YAxis tick={{ fontSize: 12, fill: '#ffffff' }} />
 
-            {/* Tooltip */}
             <Tooltip
               contentStyle={{
                 backgroundColor: '#003049',
@@ -66,7 +65,6 @@ const ExpenseGraph = ({ transactions }) => {
               formatter={(value) => [`₹${value.toFixed(2)}`, 'Balance']}
             />
 
-            {/* Line */}
             <Line
               type="monotone"
               dataKey="balance"
