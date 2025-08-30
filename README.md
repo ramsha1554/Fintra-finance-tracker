@@ -70,5 +70,6 @@ The main goal of Fintra is to **simplify financial management** for individuals 
 ```bash
 npm install react-icons chart.js react-chartjs-2 tailwindcss
 
-<img width="1894" height="882" alt="image" src="https://github.com/user-attachments/assets/3c40cbe2-1164-4a72-92bb-7eb1e4d6bf00" />
+
+
 
