@@ -6,19 +6,19 @@ const ExpenseGraph = ({ transactions }) => {
     let runningBalance = 0;
 
     transactions.forEach(transaction => {
-      const date = new Date(transaction.date).toLocaleDateString();
+      const date = new Date(transaction.date);
+      const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 
-      if (!dailyData[date]) {
-        dailyData[date] = { date, balance: runningBalance };
+      if (!dailyData[formattedDate]) {
+        dailyData[formattedDate] = { date: formattedDate, balance: runningBalance };
       }
 
       runningBalance += transaction.amount;
-      dailyData[date].balance = runningBalance;
+      dailyData[formattedDate].balance = runningBalance;
     });
 
     return Object.values(dailyData)
-      .sort((a, b) => new Date(a.date) - new Date(b.date))
-      .slice(-7); 
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
   };
 
   const graphData = processGraphData();
@@ -36,14 +36,11 @@ const ExpenseGraph = ({ transactions }) => {
 
   return (
     <div className="bg-[#003049] text-white shadow-lg p-6 rounded-xl mb-6">
-      <h3 className="text-xl font-semibold mb-4">Balance Trend (Last 7 Days)</h3>
+      <h3 className="text-xl font-semibold mb-4">Balance Trend</h3>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={graphData}>
-            {/* Subtle grid */}
             <CartesianGrid stroke="#ffffff22" />
-
-            {/* X Axis */}
             <XAxis
               dataKey="date"
               tick={{ fontSize: 12, fill: '#ffffff' }}
@@ -51,10 +48,10 @@ const ExpenseGraph = ({ transactions }) => {
               textAnchor="end"
               height={60}
             />
-
-            {/* Y Axis */}
-            <YAxis tick={{ fontSize: 12, fill: '#ffffff' }} />
-
+            <YAxis
+              tick={{ fontSize: 12, fill: '#ffffff' }}
+              domain={['auto', 'auto']}
+            />
             <Tooltip
               contentStyle={{
                 backgroundColor: '#003049',
@@ -64,11 +61,10 @@ const ExpenseGraph = ({ transactions }) => {
               }}
               formatter={(value) => [`₹${value.toFixed(2)}`, 'Balance']}
             />
-
             <Line
               type="monotone"
               dataKey="balance"
-              stroke="#f77f00" // Orange accent
+              stroke="#f77f00"
               strokeWidth={3}
               dot={{ fill: '#f77f00', strokeWidth: 2, r: 4 }}
               name="Balance"
@@ -81,3 +77,4 @@ const ExpenseGraph = ({ transactions }) => {
 };
 
 export default ExpenseGraph;
+
